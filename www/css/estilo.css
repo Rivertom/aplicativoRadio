@@ -1,0 +1,306 @@
+@font-face {
+
+    font-family: "exo";
+    src: url("Exo2-Regular.otf") format("truetype");
+
+}
+body{
+    font-family: exo;
+}
+.button-delivery
+{
+    background: orangered;
+    color: white;
+    text-align: center;
+    width: 90%;
+    height: 40px;
+    border-radius: 9px;
+    font-weight: bold;
+    border: orangered;
+}
+
+.botaoOpcoes
+{
+    border:1px solid black;
+    background: whitesmoke;
+    background-position: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    width: 30%;
+    height: 90px;
+    border-radius: 9px;
+}
+.mesaOpcoes
+{
+    height: 92px;
+}
+.imagemPromo
+{
+    box-shadow: 1px 1px 5px black;
+    height: 230px;
+    background-position: center;
+    background-size: 100%;
+}
+.titulo
+{
+    text-shadow: 1px 1px 5px whitesmoke;
+    color: orangered;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+
+/* PARTE DOS PEDIDOS */
+.capsulaPedido
+{
+    border: 2px solid black;
+    border-bottom:1px solid transparent;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    background: white;
+    height: 70px;
+    width: 95%;
+}
+.numeroPedido
+{
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+}
+.valorPedido
+{
+    color: orangered;
+    font-weight: bold;
+    font-weight: 17px;
+    float: right;
+}
+.detalhesPedido
+{
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    background: orangered;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    height: 30px;
+}
+.infoPedidos
+{
+    border-top: 1px solid transparent;
+    border: 2px solid black;
+    background:white;
+    width: 95%;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+.detalhesPedidoCompleto
+{
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    background: orangered;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    height: 30px;
+}
+.trocarPontos
+{
+    background: orangered;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: 1px solid orangered;
+    width: 90%;
+}
+.numeroTelefone{
+    color: orangered;
+    font-weight: bold;
+    font-size: 18px;
+    border: 2px solid orangered;
+    height: 30px;
+    width: 95%;
+}
+.iten
+{
+    border-bottom: 1px solid lightsalmon;
+    border-top: 1px solid lightsalmon;
+}
+.selecao
+{
+    border: 1px solid orangered;
+    border-radius: 9px;
+    height: 50px;
+    width: 95%;
+    font-size: 25px;
+    background: whitesmoke;
+    color: black;
+}
+.boxProduto
+{
+    box-shadow: 1px 1px 5px black;
+    border-radius: 10px;
+    background: white;
+    width: 95%;
+}
+
+.volume
+{
+    height: 4px;
+    background-color: #777;
+    position: relative;
+    width: 80%;
+    border-radius: 25px;
+}
+
+.volume .volume-bar
+{
+    position: absolute;
+    height: 100%;
+    background-color: #add555;
+    animation: progress-animation 6s infinite;
+}
+
+@keyframes progress-animation{
+    0% { width: 0%; } 
+    100% { width: 100%}
+    
+}
+
+
+
+
+
+
+
+
+
+
+/* equalizador */
+
+.container {
+    margin-bottom: 8px;
+    text-align: center;
+    height: 55px;
+  }
+  
+  .everlib-logo {
+    display: inline-block;
+    cursor: pointer;
+    background: transparent;
+    height: 50px;
+  }
+  .everlib-logo .everlib-logo-first-bar,
+  .everlib-logo .everlib-logo-second-bar,
+  .everlib-logo .everlib-logo-third-bar,
+  .everlib-logo .everlib-logo-fourth-bar {
+    display: inline-block;
+    border-radius: 13px;
+    width: 1px;
+    margin-right: 6px;
+    transition: .5s;
+    animation: equalize 4s 0s infinite;
+    animation-timing-function: linear;
+    vertical-align: top;
+  }
+  .everlib-logo .everlib-logo-first-bar {
+    height: 40px;
+    background: black;
+    transition: 0.5s;
+    animation-delay: -1.9s;
+  }
+  .everlib-logo .everlib-logo-second-bar {
+    height: 48px;
+    background: black;
+    animation-delay: -2.9s;
+  }
+  .everlib-logo .everlib-logo-third-bar {
+    height: 44px;
+    background: black;
+    animation-delay: -3.9s;
+  }
+  .everlib-logo .everlib-logo-fourth-bar {
+    height: 36px;
+    background: black;
+    animation-delay: -4.9s;
+  }
+  
+  @keyframes equalize {
+    0% {
+      height: 0px;
+    }
+    4% {
+      height: 2px;
+    }
+    8% {
+      height: 4px;
+    }
+    12% {
+      height: 10px;
+    }
+    16% {
+      height: 20px;
+    }
+    20% {
+      height: 30px;
+    }
+    24% {
+      height: 40px;
+    }
+    28% {
+      height: 10px;
+    }
+    32% {
+      height: 40px;
+    }
+    36% {
+      height: 48px;
+    }
+    40% {
+      height: 20px;
+    }
+    44% {
+      height: 40px;
+    }
+    48% {
+      height: 48px;
+    }
+    52% {
+      height: 30px;
+    }
+    56% {
+      height: 10px;
+    }
+    60% {
+      height: 30px;
+    }
+    64% {
+      height: 48px;
+    }
+    68% {
+      height: 30px;
+    }
+    72% {
+      height: 48px;
+    }
+    76% {
+      height: 20px;
+    }
+    80% {
+      height: 22px;
+    }
+    84% {
+      height: 27px;
+    }
+    88% {
+      height: 29px;
+    }
+    92% {
+      height: 30px;
+    }
+    96% {
+      height: 40px;
+    }
+    100% {
+      height: 48px;
+    }
+  }

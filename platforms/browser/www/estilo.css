@@ -1,0 +1,92 @@
+.div_select_taxi
+{
+    width: 80%;
+    height: 40px;
+    background: white;
+    border: 1px solid white;
+    color: #d9d9d9;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.select_taxi{
+    width: 80%;
+    height: 40px;
+    border: transparent;
+    float: left;
+    color: #d9d9d9;
+    font-weight: bold;
+    font-size: 15px;
+}
+.option
+{
+    width: 50%;
+    height: 40px;
+    background: white;
+    color: #d9d9d9;
+    font-weight: bold;
+}
+p{
+    color: white;
+}
+button{
+    background: transparent;
+    color: #d9d9d9;
+    border: transparent;
+    font-weight: bold;
+    height: 40px;
+}
+.img_moto{
+    width:90% ;
+    height:auto;
+    border-radius: 50%;
+    border: 1px solid #d9d9d9;
+    padding-right: 0%
+}
+.opcao_motorista
+{
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+    background: white;
+    width: 90%;
+    box-shadow: 1px 1px 5px #d9d9d9;
+}
+.name_motorista{
+    color: #d9d9d9;
+    font-weight: bold;
+    font-size: 18px;
+}
+.solicitar
+{
+    border: 1px solid #d9d9d9;
+    border-radius: 10%;
+}
+.info_viagem
+{
+    border: 1px solid #d9d9d9;
+    background: #d9d9d9;
+    animation-duration: 5s;
+    display: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 100%;
+}
+
+.info_viagem_solicitada
+{
+    border: 1px solid #d9d9d9;
+    background: yellow;
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 100%;
+    color: #d9d9d9;
+    font-weight: bold;
+}
+
+.letraSj
+{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}

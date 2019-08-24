@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *">-->
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <title>Radio Verde</title>
+    <link type="text/css" rel="stylesheet" href="css/integra.css" />
+    <link type="text/css" rel="stylesheet" href="css/estilo.css" />
+    <!--<link type="text/css" rel="stylesheet" hreg="css/index.css"/>-->
+
+    <script type="text/javascript" src="js/jquery-3.1.0.min.js?v=xxx"></script>
+    <script type="text/javascript" src="js/jquery.qrcode.min.js?v=xxx"></script>
+    <script type="text/javascript" src="js/jquery.mask.min.js?v=xxx"></script>
+
+    <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAowmYdY3dZwoe4qI1I_X8Ry-UPepb5dpA"></script>-->
+    <script type="text/javascript" src="cordova.js"></script>
+
+</head>
+<!--style="background-image: url(img/fundo_azul.png);"-->
+<body id="telaPrincipal">
+
+    <div id="toast" class="toast-pos" style="display:none;width:100%;position:fixed;z-index:2;">
+        <table width="100%">
+            <tr>
+                <td align="center">
+                    <table width="90%">
+                        <tr>
+                            <td align="center">
+                                <div class="toast">
+                                    <p id="toastText" align="center"></p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="fundoMenuLateral" class="modal" ontouchmove="menuDeslizanteClose();"></div>
+    <div id="modalMain" class="modal">
+        <table width="100%">
+            <tr>
+                <td align="center">
+                    <div id="modalContent" class="modal-content">
+                        <table width="100%">
+                            <tr>
+                                <td align="center" id="modalHeader" style="height:40px;border-radius:10px;">
+                                    <p id="modalTitulo" align="center" class="amareloa3" style="font-size:16px;"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p id="modalText" align="justify" class="label white"></p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="33%">
+                                                <img id="modalYes" src="img/botao_sim.png" width="100px" height="50px" onclick="modalCallBack_SIM();">
+                                            </td>
+                                            <td width="33%">
+                                                <img id="modalOk" src="img/botao_ok.png" width="100px" height="50px" onclick="modalCallBack_OK();">
+                                            </td>
+                                            <td width="33%">
+                                                <img id="modalNo" src="img/botao_nao.png" width="100px" height="50px" onclick="modalCallBack_NAO();">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+
+    <div id="abertura" class="page">
+        <img id="imgAbertura" src="img/intro.png">        
+    </div>
+
+
+    <img id="preloader" class="preloader" width="64" height="64" src="img/loadingf.png" style="display:none;position:fixed;z-index:3;">
+    <!--botao login-->
+    <div id="appBar" class="appbar" style="display:none">
+        <table width="100%">
+            <tr>
+                <td>
+                <td>
+                    <div class="appbar-h"></div>
+                </td>
+                </td>
+                <td width="100%" align="center">
+                    <table width="100%">
+                        <tr>
+                            <td id="appBarLeftButtonSpace" width="10%" style="display: none">
+                                <button id="appBarLeftButton" class="appbar-button" onclick="onBackKeyDown();"><img id="appBarLeftButtonImage" src="img/botao_voltar.png" width="25" height="25" style="display:block;"/></button>
+                            </td>
+                            <td id="appBarTitleSpace"  align="left">
+                                <p id="appBarTitleText" class="fontepainel">FAÇA SEU LOGIN</p>
+                            </td>
+                            <td id="appBarRightButtonSpace"  align="right">
+                                <table>
+                                    <tr>
+                                        <td id="appBarButton1Space" style="width: 10%">
+                                            <button id="appBarButton1" onclick="regras_Show()" class="appbar-button"><img id="imgAppBarButton1" src="img/icone_sobrea3otica.png" class="appbar-icone" style="display:block;width: 70%"/></button>
+                                        </td>
+                                        <td id="appBarButton2Space" style="width: 10%">
+                                            <button id="appBarButton2" onclick="perfil_Show()" class="appbar-button"><img id="imgAppBarButton2" src="img/world.png" class="appbar-icone" style="display:block;width: 70%"/></button>
+                                        </td>
+                                        <td id="appBarButton3Space" style="width: 10%" style="display: none">
+                                            <button id="appBarButton3" id="menuAdm"  onclick="administrador_Show()" class="appbar-button"><img id="imgAppBarButton3" src="https://img.icons8.com/pastel-glyph/64/000000/login-rounded.png" class="appbar-icone" style="display:block;width: 70%"/></button>
+                                        </td>
+                                        <td id="appBarButton4Space" style="width: 70%">
+                                            <button id="appBarButton4" onclick="login_Show()" class="appbar-button"><img id="imgAppBarButton4" src="https://img.icons8.com/pastel-glyph/64/000000/login-rounded.png" class="appbar-icone" style="display:block;width: 70%"/></button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="searchBar" class="searchbar" style="display:none">
+        <table width="100%">
+             <tr>
+                 <td>
+                     <div class="searchbar-h"></div>
+                 </td>
+                 <td>
+                     <img src="img/left-arrow-azul.png" onclick="hideSearchBar();" width="24px" height="24px">
+                 </td>
+                 <td>
+                     <input id="searchBarTxt" class="input" type="text" style="width:200px" placeholder="Pesquisar">
+                 </td>
+             </tr>
+        </table>      
+    </div>
+
+    <div id="rodape" class="bottompanel" valign="mmiddle" align="center">
+        <img id="imgRodape" src="img/brasao.png" >
+    </div>
+
+    <div id="app" align="center" style="display:none;">
+
+            <div id="login" class="page" style="background: white;;background-size:cover;">
+            <div align="center">
+                    <div class="onerow"></div>
+                    <table align="center">
+                        <tr>
+                            <td align="center">
+                                <img src="img/logo.png" width="70%" height="140px">
+                            </td>
+                        </tr>
+                    </table>
+                    
+                <div class="desingCx">
+                    <table id="loginForm" width="100%">
+                        <tr>
+                            <td align="center">
+                                <table width = "90%">
+                                    <tr>
+                                        <td>
+                                            <div class="onerow"></div>
+                                            <table width="100%" style="border:1px #203257;background-color: #F0F0F0;border-radius: 10px;">
+                                                <tr>
+                                                    <td align="center">
+                                                        <table width="90%">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="onerow"></div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <input id="logintxtEmail" class="input" placeholder="Email" type="email" width="90%">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="onerow"></div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <input id="logintxtSenha" class="input" placeholder="Senha" type="password">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="onerow"></div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr align="center">
+                                        <td>
+                                            <div class="onerow"></div>
+                                            <button class="button-car" onclick="loginEntrar_click();">ENTRAR</button>
+                                        </td>
+                                    </tr>
+                                    <tr align="center">
+                                            <td>
+                                                <div class="onerow"></div>
+                                                <p style="color:black" onclick="loginResetarSenha();" >RESETAR SENHA</p>
+                                            </td>
+                                        </tr> 
+                                    <tr align="center">
+                                        <td>
+                                            <div class="onerow"></div>
+                                            <button class="button-car"  onclick="termo_Show();">CRIAR CONTA</button>
+                                        </td>
+                                    </tr>   
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+                
+                
+            </div>
+            <div id="menu_principal" class="page" style="background-image:url(img/1.1.1.png); background:cover">
+                <div style="padding-top: 60%" align="center">
+                    <!--Parte onde o Player da Radio Fica-->
+                    <div id='players' align="center" style=" height: 60px;">
+                        <audio style="display: none" id="audioRadio">
+                            <source src="http://stm6.sejaguia.com.br:9594/;" type="audio/mp3" />
+                            seu navegador não suporta
+                        </audio><br>
+                    </div>
+                        <!--EQUALIZADOR TOM-->
+                        <div id="equalizando" style="width: 99%;height: 60px; display: none">
+                            <div class="container" style="border: 1px solid red">
+                                <div class="everlib-logo" style="border: 1px solid yellow">
+                                    <i class="everlib-logo-first-bar"></i>
+                                    <i class="everlib-logo-second-bar"></i>
+                                    <i class="everlib-logo-third-bar"></i>
+                                    <i class="everlib-logo-fourth-bar"></i>
+                                    <i class="everlib-logo-first-bar"></i>
+                                    <i class="everlib-logo-second-bar"></i>
+                                    <i class="everlib-logo-third-bar"></i>
+                                    <i class="everlib-logo-fourth-bar"></i>
+                                    <i class="everlib-logo-first-bar"></i>
+                                    <i class="everlib-logo-second-bar"></i>
+                                    <i class="everlib-logo-third-bar"></i>
+                                    <i class="everlib-logo-fourth-bar"></i>
+                                </div>
+                            </div>
+                        </div>
+                    <!--Botões de Açao Play, Pause , Stop-->
+                    <div id="botoesAcao" align="center">
+                        <table style="width: 50%;">
+                            <tr>
+                                <td ><img src="img/stop.png" id="btParar" onclick="javascript: document.getElementById('audioRadio').pause(); equalizando.style.display='none'" style="float:left; width: 70%" ></td>
+                                <td ><img src="img/play.png" id="btStart" onclick="javascript: document.getElementById('audioRadio').play(); equalizando.style.display='block'" style=" width: 90%" ></td>
+                            </tr>
+                        </table> <br><br>
+                        <div align="center">
+                            <table align="center" style="padding-left: 10%">
+                                <tr>
+                                    <td style="width: 5%"><img src="img/volume.png" style="float:left" width="95%" height="16px"></td>
+                                    <td style="width: 94%"><div class="volume"><div id="volumeHightLow" style="background:#6F8F2F;height: 4px;width: 100%;border-radius: 25px;"></div></div></td>  
+                                </tr>
+                            </table>
+                        </div> 
+
+                    </div>
+
+                    <div style="padding-top: 5%">
+                        <!--Parte das redes Sociais-->
+                        
+                    <div id="redesSociais">
+                        <a href="http://www.facebook.com/radioverderadio/"><img src="img/face.png" style="padding:5%" width="10%"></a>
+                        <a href="http://radioverde.pt/"><img src="img/site.png" width="10%" style="padding:5%" ></a>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <!-- app -->   
+           
+    
+    
+    </body>
+    
+    <script type="text/javascript">
+    
+    var versao="D";
+
+    var simulaAjax=true;
+
+    var gUser = [];
+
+    var gVersao = "1.0.0";
+
+    //CallBacks da Modal
+    
+        function voidAlertCallBack(){
+            return;
+        }
+    
+        function modalCallBack_SIM() {
+            modalMain.style.display = "none";
+            modalOn = false;
+    
+            if (funcaoDaModal == "semAcao") {
+                return;
+            }
+    
+        }
+    
+        function modalCallBack_NAO() {
+            modalMain.style.display = "none";
+            modalOn = false;
+    
+            if (funcaoDaModal == "semAcao") {
+                return;
+            }
+    
+    
+        }
+    
+        function modalCallBack_OK() {
+            modalMain.style.display = "none";
+            modalOn = false;
+    
+            if (funcaoDaModal == "semAcao") {
+                return;
+            }
+    
+    
+    }
+    
+    
+    
+        //FUNCOES DOS BOTOES DO CELULAR
+    
+        function onBackKeyDown() {
+    
+            if (mdDone) {
+                mdDone = false;
+                menuDeslizanteClose();
+                return;
+            }
+    
+    
+            if (!modalOn) {
+                if(currView=="login") {
+                    if(device.platform==="Adnroid"){
+                        navigator.app.exitApp(); 
+                    }
+                }
+    
+                if(currView=="termo"){
+                   login_Show();
+                }  
+         
+    
+                if(currView=="cadastro")
+                    login_Show();
+                }
+
+                if(currView=="menu_principal"){
+                    navigator.app.exitApp(); 
+                }
+                if(currView=="Perfil"){
+                    menu_principal_Show();
+                }
+    
+                if(currView=="contato"){
+                    menu_principal_Show();
+                }            
+
+            }
+        
+    
+    
+        function onMenuKeyDown() {
+            /*
+            if (currView == "menu_principal") {
+                rota('info');
+            } else return false;
+            */
+            if (!mdDone) {
+            //mdCurrView = currView;
+            //menuDeslizanteOpen();
+            }
+        }
+
+    
+    
+        //INICIALIZAÇÃO DO APLICATIVO
+    
+        function onDeviceReady() {
+    
+            document.addEventListener("backbutton", onBackKeyDown, false);
+            document.addEventListener("menubutton", onMenuKeyDown, false);
+            //if (device.platform="browser")
+            abertura_Show();
+     
+            imgAbertura.width = window.innerWidth;
+            imgAbertura.height = window.innerHeight;
+    
+     
+            telaPrincipal.style.width = window.innerWidth + "px";
+            telaPrincipal.style.height = window.innerHeight + "px";
+    
+            var rodapeHeight = 100;
+            rodape.style.height = rodapeHeight + "px";
+            rodape.style.top = (window.innerHeight - rodapeHeight) + "px";
+    
+            currView="abertura";
+    
+            modalOn=false;
+        }
+
+        function onVolumeDown()
+        {
+            var audio = document.getElementById('audioRadio')
+            if(audio.volume < 0.1)
+            {
+                audio.volume = 0;
+            } else {
+            audio.volume = audio.volume - 0.1;
+            volumeHightLow.style.width = (audio.volume-0.1)*100 + "%";
+            }
+        }
+
+        function onVolumeUp()
+        {
+            var audio = document.getElementById('audioRadio')
+            if(audio.volume > 0.9)
+            {
+                audio.volume = 0.9;
+            }else{
+            audio.volume = audio.volume + 0.1;
+            volumeHightLow.style.width =  (audio.volume+0.1) * 100 +"%";
+            }
+
+
+        }
+    
+    
+        window.onload = function () {
+            
+            document.addEventListener('volumedownbutton',onVolumeDown,false);
+            document.addEventListener('volumeupbutton',onVolumeUp,false);
+            document.addEventListener('deviceready', onDeviceReady, false); 
+        }
+
+        var func = "";
+        
+    </script>
+
+
+
+    
+    </html>
+    <script type="text/javascript" src="Appscreen.js?v=xxx"></script>
+    <script type="text/javascript" src="js/integra.js?v=xxx"></script>
+    <script type="text/javascript" src="js/simulacoes.js?v=xxx"></script>
